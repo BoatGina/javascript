@@ -1,0 +1,139 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+
+window.onload=function(){
+	var oDiv=document.getElementById("div1");
+	var oDiv2=document.getElementById("div2");
+	var oDiv3=document.getElementById("div3");
+	var oParent=document.getElementById("parent");
+	var disX=0;
+	oDiv.onmousedown=function(ev){
+		oEvent=ev||event;
+		disX=oEvent.clientX-oDiv.offsetLeft;
+		
+		//函数整理：
+		function startMove(ev)
+		{
+			oEvent=ev||event;
+			var l=oEvent.clientX-disX;
+			if(l<0){
+				l=0;
+			};
+			if(l>oParent.offsetWidth-oDiv.offsetWidth){
+				l=(oParent.offsetWidth-oDiv.offsetWidth)+"px";
+			};
+			oDiv.style.left=l+"px";
+
+			var sore=l/(oParent.offsetWidth-oDiv.offsetWidth);
+			document.title=sore;
+
+			/*//变大小
+			oDiv2.style.width=400*sore+"px";
+			oDiv2.style.height=400*sore+"px";
+			//变透明度
+			oDiv2.style.filter="alpha(opacity:"+sore*100+")";
+			oDiv2.style.opacity=sore;*/
+			//控制文段的滚动
+			oDiv3.style.top=-(oDiv3.offsetHeight-oDiv2.offsetHeight)*sore+"px";
+
+
+		};
+		function stopMove(){
+			this.onmousemove=null;
+			this.onmouseup=null;
+			if(oDiv.releaseCapture){
+				this.releaseCapture();
+			};
+		};
+
+		if(oDiv.setCapture){
+			//IE
+			oDiv.onmousemove=startMove;
+			oDiv.onmouseup=stopMove;
+			oDiv.setCapture();
+		}
+		else{
+			//Grome FF
+			document.onmousemove=startMove;
+			document.onmouseup=stopMove;
+			return false;
+		};	
+	};
+};
+//实现兼容性问题	
+</script>
+<style type="text/css">
+	body{
+		background: #ccc;
+	}
+	#parent{
+		width: 500px;
+		height: 20px;
+		background: #666;
+		margin: 10px auto;
+		position: relative;
+	}
+	#div1{
+		width: 20px;
+		height: 20px;
+		background: red;
+		position: absolute;
+		
+	}
+	#div2{
+		width: 200px;
+		height: 300px;
+		border:1px solid black;
+		position: relative;
+		overflow: hidden;
+	}
+	#div3{
+		position:absolute;
+		
+	}
+
+</style>
+</head>
+<body>
+<div id="parent">
+	<div id="div1"></div>
+</div>
+<div id="div2">
+	<div id="div3">
+			在苍茫的大海上，狂风卷集着乌云。在乌云和大海之间，海燕像黑色的闪电，在高傲的飞翔。
+		一会儿翅膀碰着波浪，一会儿箭一般地直冲向乌云，它叫喊着，——就在这鸟儿勇敢的叫喊声里，乌云听出了欢乐。
+		在这叫喊声里——充满着对暴风雨的渴望！在这叫喊声里，乌云听出了愤怒的力量、热情的火焰和胜利的信心。
+		海鸥在暴风雨来临之前呻吟着，——呻吟着，它们在大海上飞窜，想把自己对暴风雨的恐惧，掩藏到大海深处。
+		海鸭也在呻吟着，——它们这些海鸭啊，享受不了生活的战斗的欢乐：轰隆隆的雷声就把它们吓坏了。
+		蠢笨的企鹅，胆怯地把肥胖的身体躲藏到悬崖底下……只有那高傲的海燕，勇敢地，自由自在的，在泛起白沫的大海上飞翔！
+		乌云越来越暗，越来越低，向海面直压下来，而波浪一边歌唱，一边冲向高空，去迎接那雷声。
+		雷声轰响。波浪在愤怒的飞沫中呼叫，跟狂风争鸣。看吧，狂风紧紧抱起一层层巨浪，恶狠狠地把它们甩到悬崖上，把这些大块的翡翠摔成尘雾和碎末。
+		海燕叫喊着，飞翔着，像黑色的闪电，箭一般地穿过乌云，翅膀掠起波浪的飞沫。
+		看吧，它飞舞着，像个精灵，——高傲的、黑色的暴风雨的精灵，——它在大笑，它又在号叫……它笑些乌云，它因为欢乐而号叫！
+		这个敏感的精灵，——它从雷声的震怒里，早就听出了困乏，它深信，乌云遮不住太阳，——是的，遮不住的！
+		狂风吼叫……雷声轰响……
+		一堆堆乌云，像青色的火焰，在无底在大海上燃烧。大海抓住闪电的箭光，把它们熄灭在自己的深渊里。这些闪电的影子，活像一条条火蛇，在大海里蜿蜒游动，一晃就消失了。
+		——暴风雨！暴风雨就要来啦！
+		这是勇敢的海燕，在怒吼的大海上，在闪电中间，高傲的飞翔；这是胜利的预言家在叫喊：
+		——让暴风雨来得更猛烈些吧
+
+		孝心无价
+		作者：毕淑敏
+		我不喜欢一个苦孩求学的故事。家庭十分困难，父亲逝去，弟妹嗷嗷待哺，可他大学毕业后，还要坚持读研究生，母亲只有去卖血……我以为那是一个自私的学子。求学的路很漫长，一生一世的事业，何必太在意几年蹉跎?况且这时间的分分秒秒都苦涩无比，需用母亲的鲜血灌溉!一个连母亲都无法挚爱的人，还能指望他会爱谁?把自己的利益放在至高无上位置的人，怎能成为为人类献身的大师?我也不喜欢父母重病在床，断然离去的游子，无论你有多少理由。地球离了谁都照样转动，不必将个人的力量夸大到不可思议的程度。在一位老人行将就木的时候，将他对人世间最后的期冀斩断，以绝望之心在寂寞中远行，那是对生命的大不敬。
+		我相信每一个赤诚忠厚的孩子，都曾在心底向父母许下“孝”的宏愿，相信来日方长，相信水到渠成，相信自己必有功成名就衣锦还乡的那一天，可以从容尽孝。
+		可惜人们忘了，忘了时间的残酷，忘了人生的短暂，忘了世上有永远无法报答的恩情，忘了生命本身有不堪一击的脆弱。
+		父母走了，带着对我们深深的挂念。父母走了，遗留给我们永无偿还的心情。你就永远无以言孝。
+		有一些事情，当我们年轻的时候，无法懂得。当我们懂得的时候，已不再年轻。世上有些东西可以弥补，有些东西永无弥补。
+		“孝”是稍纵即逝的眷恋，“孝”是无法重现的幸福。“孝”是一失足成千古恨的往事，“孝”是生命与生命交接处的链条，一旦断裂，永无连接。
+		赶快为你的父母尽一份孝心。也许是一处豪宅，也许是一片砖瓦。也许是大洋彼岸的一只鸿雁，也许是近在咫尺的一个口信。也许是一顶纯黑的博士帽，也许是作业簿上的一个红五分。也许是一桌山珍海味，也许是一只野果一朵小花。也许是花团锦簇的盛世华衣，也许是一双洁净的旧鞋。也许是数以万计的金钱，也许只是含着体温的一枚硬币……但“孝”的天平上，它们等值。
+		只是，天下的儿女们，一定要抓紧啊!趁你父母健在的光阴。
+		每一次读这篇文章都会落泪,都会想好多,都会给父母打个电话.问候一下父母.
+	</div>
+</div>
+
+</body>
+</html>

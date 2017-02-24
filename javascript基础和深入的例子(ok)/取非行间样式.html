@@ -1,0 +1,38 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>取非行间样式</title>
+<script >
+function getStyle(obj,name){
+	if(obj.currentStyle){
+			alert(obj.[name]);
+		}
+		else{
+			alert(getComputedStyle(obj,false)[name]);
+		}
+}
+window.onload=functicurrentStyleon(){
+	var oDiv=document.getElementById("div1");
+	//alert(getComputedStyle(oDiv,false)['width']);
+	//alert(oDiv.currentStyle["width"]);
+	//alert(typeof oDiv.currentStyle);
+	getStyle(oDiv,'backgroundColor');
+	//注意：这种方法只能取简单样式，不能够取复杂样式。
+}
+	
+</script>
+<style type="text/css">
+	#div1{
+		width: 200px;
+		height: 200px;
+		background: red;
+	}
+</style>
+</head>
+<body>
+<div id="div1" >
+	
+</div>
+</body>
+</html>

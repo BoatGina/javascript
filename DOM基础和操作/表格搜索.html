@@ -1,0 +1,94 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>
+window.onload=function(){
+	var oTab=document.getElementById("tab");
+	var oBtn=document.getElementById("btn");
+	var name=document.getElementById("text");
+
+	oBtn.onclick=function(){
+			var oname=name.value.toLowerCase();	
+			var arr=oname.split(" ");
+
+			for(var i=0;i<oTab.tBodies[0].rows.length;i++){
+				var oName=oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+				oTab.tBodies[0].rows[i].style.display="none";
+				for(var j=0;j<arr.length;j++)			
+				{
+
+					if (oName.search(arr[j])!=-1) {
+							oTab.tBodies[0].rows[i].style.display="block";
+						}//注意if else之间 的连接不要加多分号
+					/*else{
+						oTab.tBodies[0].rows[i].style.display="none";
+					}*/
+					//为什么两种逻辑一样的方法效果不一样？？？
+				}
+
+		    }
+		
+	}
+
+}
+
+/*
+大小写搜索：toLowerCase()方法
+模糊搜索：obj.search(元素)  其中-1代表该元素在该对象找不到
+多关键字查找：split("分开符号")
+*/
+</script>
+</head>
+<body>
+姓名：<input id="text" type="text"/>
+<button id="btn">searsh</button>
+<table id="tab" border="1" width="500px"> 
+	<thead>
+		<td>ID</td>
+		<td>姓名</td>
+		<td>年龄</td>
+		<td>操作</td>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>李一</td>
+			<td>12</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>李二</td>
+			<td>34</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>刘一</td>
+			<td>23</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>王二</td>
+			<td>18</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>李五</td>
+			<td>38</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>Blue</td>
+			<td>38</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

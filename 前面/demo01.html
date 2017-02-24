@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>js学习</title>
+<style type="text/css">
+	#demo02{
+		color: green;
+		font-size: 12px;
+		font-weight: normal;
+	}
+	img{
+		cursor: pointer;
+	}
+</style>
+<script type="text/javascript">
+	function demo01(){
+		var x=document.getElementById("demo01");
+		x.innerHTML="This is what i have changed.";
+	}
+	function demo02(){
+		var x=document.getElementById("demo02");
+		x.style.color="red";
+		x.style.font-size="14px";
+		x.style.font-weight="bold";
+	}
+	function demo03(){
+		var x=document.getElementById("demo03");
+		if(x.src.match("v4")){
+			x.src="images/v3.jpg";
+		}
+		else{
+			x.src="images/v4.jpg";
+		}
+	}
+</script>
+</head>
+<body>
+
+<p id="demo01">
+	改变html里面的内容。
+	改变html里面的内容。
+</p>
+<p id="demo02">
+	改变这里的字体属性。
+</p>
+<img id="demo03" onclick="demo03()" src="images/v4.jpg" />
+
+
+<script>
+	document.write("<h1>good good study,day day up.</h1>");
+	document.write("<i>if you try your best,you will success.</i>");
+</script>
+<br/>
+
+<button type="button"  onclick="alert('welcome')"> 确定</button>
+<button type="button" onclick="demo01()">改变内容</button>
+<button type="button" onclick="demo02()">改变样式</button>
+</body>
+</html>

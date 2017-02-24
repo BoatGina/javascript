@@ -1,0 +1,73 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+function startMove(iTarget){
+	var oDiv=document.getElementById("div1");
+	var timer=null;
+	var speed=0;
+
+	clearInterval(timer);
+	setInterval(function(){
+		speed=(iTarget-oDiv.offsetLeft)/10;
+		speed=speed>0?Math.ceil(speed):Math.floor(speed);
+		oDiv.style.left=oDiv.offsetLeft+speed+"px";
+		
+		document.title=oDiv.style.left;
+	},30);
+
+}
+/*
+Math.ceil(速度值);//向上取整
+Math.floor(速度值);//向下取整
+*/
+
+window.onload=function(){
+	var oBtn=document.getElementById('btn');
+	var oDiv=document.getElementById("div1");
+
+	oBtn.onclick=function(){
+		startMove(300);
+	};
+
+}
+
+	
+</script>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding:0;
+	}
+	button{
+
+	}
+	#div1{
+		width: 150px;
+		height: 150px;
+		background: red;
+		position: absolute;
+		top: 50px;
+		left:800px;
+	}
+	#div2{
+		width: 2px;
+		height: 500px;
+		background: black;
+		position: absolute;
+		left: 300px;
+		top: 0;
+
+	}
+	
+
+</style>
+</head>
+<body>
+<button id="btn">开始运动</button>
+<div id="div1"></div>
+<div id="div2"></div>
+</body>
+</html>

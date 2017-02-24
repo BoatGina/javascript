@@ -1,0 +1,36 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+window.onload=function(){
+/*function show(){
+	alert('a');
+}*/
+//setInterval(show,1000); 间隔型：无限执行  对应clearInteval()
+//setTimeout(show,1000); 延时型 ：只执行一次 对应clearTimeout()
+var oBtn1=document.getElementById("btn1");
+var oBtn2=document.getElementById("btn2");
+var Time=null;
+oBtn1.onclick=function(){
+	Time=setInterval(function(){alert('a');},1000);
+};
+oBtn2.onclick=function(){
+	clearInterval(Time);
+};
+/*oBtn2.onclick=function(){
+	clearInterval(Time);
+}*/
+/*var str='12345';
+alert(str[0]);//ie7不兼容
+alert(str.charAt(0));//兼容性比较好
+*/
+}
+</script>
+</head>
+<body>
+<button id="btn1">start</button>
+<button id="btn2">stop</button>
+</body>
+</html>

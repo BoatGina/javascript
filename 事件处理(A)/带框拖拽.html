@@ -1,0 +1,80 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+
+window.onload=function(){
+	var oDiv=document.getElementById("div1");
+	var disX=0;
+	var disY=0;
+	oDiv.onmousedown=function(ev){
+		oEvent=ev||event;
+		disX=oEvent.clientX-oDiv.offsetLeft;
+		disY=oEvent.clientY-oDiv.offsetTop;
+		console.log("hello");
+		//创建框
+		var oBox = document.createElement("div");
+		oBox.className="box";
+		oBox.style.width=oDiv.offsetWidth+"px";
+		oBox.style.height=oDiv.offsetHeight+"px";
+		oBox.style.left=oDiv.offsetLeft+"px";
+		oBox.style.top=oDiv.offsetTop+"px";
+		document.body.appendChild(oBox);
+
+		//函数整理：
+		function startMove(ev)
+		{
+			oEvent=ev||event;
+			var l=oEvent.clientX-disX;
+			var t=oEvent.clientY-disY;			
+			oBox.style.left=l+"px";
+			oBox.style.top=t+"px";
+		};
+		function stopMove(){
+			oDiv.style.left=oBox.offsetLeft+"px";
+			oDiv.style.top=oBox.offsetTop+"px";
+			document.body.removeChild(oBox);
+			this.onmousemove=null;
+			this.onmouseup=null;
+			if(oDiv.releaseCapture){
+				this.releaseCapture();
+			};
+		};
+
+		if(oDiv.setCapture){
+			//IE
+			oDiv.onmousemove=startMove;
+			oDiv.onmouseup=stopMove;
+			oDiv.setCapture();
+		}
+		else{
+			//Grome FF
+			document.onmousemove=startMove;
+			document.onmouseup=stopMove;
+			return false;
+		};	
+	};
+};
+//为什么这个带框文件拉不动呢
+</script>
+<style type="text/css">
+	#div1{
+		width: 150px;
+		height: 150px;
+		background: yellow;
+		position: absolute;
+	}
+	.box{
+		border:1px dotted black;
+	}
+	body{
+		background: #ccc;
+	}
+</style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

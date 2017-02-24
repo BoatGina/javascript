@@ -1,0 +1,35 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>网页换肤</title>
+<style type="text/css">
+	.one{
+		width: 200px;
+		height: 200px;
+		background: red;
+		border:1px solid black;
+	}
+	.two{
+		width: 300px;
+		height: 300px;
+		background: green;
+		border:1px solid black;
+	}
+</style>
+<script>
+	var oDiv=document.getElementById("div1");
+	function change(){
+		oDiv.className="two";
+	}
+</script>
+
+</head>
+
+<body>
+<div id="div1" class="one">
+	you you you me me me 
+</div>
+<button onclick="change()">change</button>
+</body>
+</html>

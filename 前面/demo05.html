@@ -1,0 +1,36 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>网页换肤</title>
+<link id="link1" rel="stylesheet" type="text/css" href="css/color1.css"/>
+<script>
+	var oLink=document.getElementById("link1");
+	/*function change(){
+		if(oLink.href=="css/color1.css"){
+			oLink.href="css/color2.css";
+		}
+		else
+		{
+			oLink.href="css/color1.css";
+		}
+	}*/
+	function skin1(){
+		oLink.href="css/color2.css";
+	}
+
+</script>
+</head>
+<body>
+<div>
+	you are a good man.
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<button onclick="skin1()">change</button>
+</body>
+
+</html>

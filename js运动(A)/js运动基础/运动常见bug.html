@@ -1,0 +1,55 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+window.onload=function(){
+	var oBtn=document.getElementById("btn");
+	var oDiv=document.getElementById("div1");
+	var Timer=null;
+
+	oBtn.onclick=function(){
+		clearInterval(Timer);
+		Timer=setInterval(function(){
+			var speed =10;
+			if(oDiv.offsetLeft>=500){
+				clearInterval(Timer);
+			}
+			else{
+				oDiv.style.left=oDiv.offsetLeft+speed+"px";
+			}
+
+		},30);
+
+		
+	}
+}
+/*
+运动中的bug：
+不会停止；
+速度取某些值会无法停止；[如  7]
+到达位置后再点击还会运动；
+重复点击速度加快；
+*/	
+</script>
+<style type="text/css">
+	button{
+		
+	}
+	div{
+		width:200px;
+		height: 200px;
+		background: red;
+		position: absolute;
+		top: 50px;
+		left: 0px;
+	}
+</style>
+</head>
+<body>
+<button id="btn">开始运动</button>
+<div id="div1">
+</div>
+</body>
+</html>

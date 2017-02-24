@@ -1,0 +1,86 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+function getStyle(obj,name){
+	if(obj.currentStyle){
+		return obj.currentStyle[name];
+	}
+	else{
+		return getComputedStyle(obj,false)[name];
+	}
+};
+
+function startMove(obj,arrt,iTarget,fnEnd){
+	clearInterval(obj.timer);
+	obj.timer=setInterval(function(){
+			if(arrt=="opacity"){
+				var cur=Math.round(parseFloat(getStyle(obj,arrt))*100);
+				//Math.round() 四舍五入
+			}
+			else{
+				var cur=parseInt(getStyle(obj,arrt));	
+			}
+			speed=(iTarget-cur)/6;
+				speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			
+			if(cur == iTarget){
+				clearInterval(obj.timer);
+				if(fnEnd) fnEnd();
+			}
+			else{
+				if(arrt=="opacity"){
+					cur+=speed;
+					obj.style.fliter="alpha(opacity:"+cur+")";
+					obj.style.opacity=cur/100;
+				}
+				else{
+					obj.style[arrt]=cur+speed+"px";
+				}
+			}
+		},30);
+};
+
+window.onload=function(){
+	var oDiv=document.getElementById("div");
+
+	oDiv.onmouseover=function(){
+		oDiv.timer=null;
+		startMove(oDiv,"width",300,function(){
+			startMove(oDiv,"height",300,function(){
+				startMove(oDiv,"opacity",60);
+			});
+		});
+	};
+	oDiv.onmouseout=function(){
+		oDiv.timer=null;
+		startMove(oDiv,"opacity",30,function(){
+			startMove(oDiv,"height",150,function(){
+				startMove(oDiv,"width",150);
+
+			});
+		});
+	};
+
+
+};
+	
+</script>
+<style type="text/css">
+	
+	div{
+		margin: 10px;		
+		width: 150px;
+		height: 150px;
+		background: red;
+		filter:alpha(opacity:30);
+		opacity:0.3;
+	}
+</style>
+</head>
+<body>
+<div id="div"></div>
+</body>
+</html>

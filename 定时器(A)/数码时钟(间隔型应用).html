@@ -1,0 +1,51 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>数码时钟</title>
+<script >
+function toDouble(n) {
+	if(n<10){
+		return '0'+n;
+	}
+	else{
+		return ''+n;
+	}
+}
+
+window.onload=function(){
+	var oImg=document.getElementsByTagName("img");
+	function tick(){
+		var oDate = new Date();
+		var str=toDouble(oDate.getHours())+toDouble(oDate.getMinutes())+toDouble(oDate.getSeconds());
+		for(var i=0;i<str.length;i++){
+				oImg[i].src="images/"+str.charAt(i)+".gif";
+		}
+	}
+	setInterval(tick,1000);
+	tick();
+}	
+</script>
+<style type="text/css">
+	body{
+		background: #666;
+		font-size: 20px;
+		color:#fff;
+		font-weight: bold;
+	}
+		height: 88px;
+		line-height: 88px;
+		color:#fff;
+</style>
+</head>
+<body >
+<img src="images/0.gif"/>
+<img src="images/0.gif"/>
+:
+<img src="images/0.gif"/>
+<img src="images/0.gif"/>
+:
+<img src="images/0.gif"/>
+<img src="images/0.gif"/>
+</body>
+</html>

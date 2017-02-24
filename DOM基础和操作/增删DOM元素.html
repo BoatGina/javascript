@@ -1,0 +1,93 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+window.onload=function(){
+		var oTab=document.getElementById("tab");
+		var oName=document.getElementById("text1");
+		var oAge=document.getElementById("text2");
+		var oBtn=document.getElementById("btn");
+		var oLength=oTab.tBodies[0].rows.length;
+
+		oBtn.onclick=function(){
+			var oTr=document.createElement("tr");
+
+			var oTd=document.createElement("td");
+			oTd.innerHTML=++oLength;
+			/*
+			i++返回的是自增之前的值，++i返回的则是自增后的值。
+			如：
+			var i = 1;
+			var a = i++;  //a = 1;  此时i为2，但赋给a的是1
+			var b = ++i;  //b = 3
+			*/
+			oTr.appendChild(oTd);
+
+			var oTd=document.createElement("td");
+			oTd.innerHTML=oName.value;
+			oTr.appendChild(oTd);
+
+			var oTd=document.createElement("td");
+			oTd.innerHTML=oAge.value;
+			oTr.appendChild(oTd);
+
+			var oTd=document.createElement("td");
+			oTd.innerHTML="<a href='javascript:;'>删除</a>";
+			oTr.appendChild(oTd);
+			oTd.getElementsByTagName("a")[0].onclick=function(){
+				oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+			};//角色要对得上
+			oTab.tBodies[0].appendChild(oTr);
+		};
+}
+	
+</script>
+</head>
+<body>
+姓名：<input id="text1" type="text"/>
+年龄：<input id="text2" type="text"/>
+<button id="btn">创建</button>
+<table id="tab" border="1" width="500px"> 
+	<thead>
+		<td>ID</td>
+		<td>姓名</td>
+		<td>年龄</td>
+		<td>操作</td>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>李一</td>
+			<td>12</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>李二</td>
+			<td>34</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>李三</td>
+			<td>23</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>李四</td>
+			<td>18</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>李五</td>
+			<td>38</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

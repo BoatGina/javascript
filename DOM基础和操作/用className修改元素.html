@@ -1,0 +1,39 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+function getByClass(oParent,sclass){
+	var oChild=oParent.getElementsByTagName('*');
+	var aResult=[];
+	for(var i=0;i<oChild.length;i++){
+		if(oChild[i].className==sclass){
+			aResult.push(oChild[i]);
+		}
+	}
+	return aResult;
+}
+
+window.onload=function(){
+	var oUl=document.getElementById("ull");
+	//注意这里要获取父类元素id
+	var oBox=getByClass(oUl,'box');
+	for(var i=0;i<oBox.length;i++){
+		oBox[i].style.background="red";
+	}
+}
+	
+</script>
+</head>
+<body>
+<ul id="ull">
+	<li class="box"></li>
+	<li class="box"></li>
+	<li></li>
+	<li class="box"></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>

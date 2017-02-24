@@ -1,0 +1,67 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+var timer=null;
+function startMove(iTarget){
+	var oDiv=document.getElementById("div1");
+	var oText=document.getElementById("text");
+	//var timer=null; 作用范围不一样
+	clearInterval(timer);
+	var speed=0;
+	timer=setInterval(function(){
+		speed=(iTarget-oDiv.offsetTop)/4;
+		speed=speed>0?Math.ceil(speed):Math.floor(speed);
+		if(oDiv.offsetTop == iTarget){
+			clearInterval(timer);
+		}
+		else{
+			oText.value=oDiv.offsetTop
+			oDiv.style.top=oDiv.offsetTop+speed+"px";
+		}
+	},30);
+
+}
+
+window.onscroll=function(){
+	var oDiv=document.getElementById("div1");
+	var ScrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	//alert(ScrollTop);//奇怪，为什么ScrollTop总是没有定义呢
+	//oDiv.style.top=document.documentElement.clientHeight-oDiv.offsetHeight+ScrollTop+"px";
+	//startMove(document.documentElement.clientHeight-oDiv.offsetHeight+ScrollTop);
+
+
+    //oDiv.style.top=(document.documentElement.clientHeight-oDiv.offsetHeight)/2+ScrollTop+"px";
+    startMove(parseInt((document.documentElement.clientHeight-oDiv.offsetHeight)/2+ScrollTop));
+
+
+}
+	
+</script>
+<style type="text/css">
+	div{
+		width: 150px;
+		height: 250px;
+		background: red;
+		position: absolute;
+		right: 0;
+		
+	}
+	body{
+		height: 5000px;
+	}
+	input{
+		position: fixed;
+		top: 0;
+		right: 0;
+
+	}
+</style>
+</head>
+<body>
+<input id="text" type="text"/>
+<div id="div1"></div>
+</body>
+</html>

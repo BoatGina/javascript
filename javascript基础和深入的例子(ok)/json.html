@@ -1,0 +1,24 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>json的用法和循环方法</title>
+<script>
+	window.onload=function(){
+		var oBtn=document.getElementById("btn");
+		var json = {a:12,b:34,c:90,d:45};
+		oBtn.onclick=function(){
+			//alert(json['a']);注意字符串
+			for(var i in json){
+				alert(i+"="+json[i]);
+			}
+		}
+	}
+	//json没有length
+</script>
+</head>
+
+<body>
+<button id="btn">开始</button>
+</body>
+</html>

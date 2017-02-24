@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+function insertAfter(newEl, targetEl)
+        {
+            var parentEl = targetEl.parentNode;
+            
+            if(parentEl.lastChild == targetEl)
+            {
+                parentEl.appendChild(newEl);
+            }else
+            {
+                parentEl.insertBefore(newEl,targetEl.nextSibling);
+            }            
+        }
+
+window.onload=function(){
+	var oText=document.getElementById("text1");
+	var oBtn=document.getElementById("btn1");
+	var oUl=document.getElementById("ull");
+	var oBtn2=document.getElementById("btn2");
+
+	oBtn.onclick=function(){
+		var aLi=document.getElementsByTagName("li");
+		var oLi=document.createElement("li");
+		//oUl.appendChild(oLi);
+		//父类.appendChild(子节点)
+		//父类.insertBefore(子节点，在谁之前)
+		oLi.innerHTML=oText.value;
+		/*if(aLi.length>0){
+			oUl.insertBefore(oLi,aLi[0]);
+		}
+		else{*/
+			//oUl.insertBefore(oLi,null);
+			//oUl.appendChild(oLi);
+			insertAfter(oLi,aLi[1]);
+	}
+
+	oBtn2.onclick=function(){
+		alert(aLi.length);
+	}
+}
+/*function getId(obj){
+	return document.getElementById(obj);
+}
+function getGroud(obj){
+	return document.getElementsByTagName(obj);
+}
+window.onload=function(){
+	var oText=getId("text1");
+	var oBtn1=getId("btn1");
+	var oUll=getId("ull");
+	var oBtn2=getId("btn2");
+
+	oBtn1.onclick=function(){
+	var aLi=getGroud("li");
+	var oLi=document.createElement("li");
+	oLi.innerHTML=oText.value;
+	if(aLi.length>0){
+		oUll.insertBefore(oLi,aLi[0]);
+	}
+	else{
+		oUll.appendChild(oLi);
+	}
+	}
+
+}	*/
+</script>
+</head>
+<body>
+<input id="text1" type="text" />
+<button id="btn1">创建</button>
+<ul id="ull">
+	<li>1</li>
+	<li>2</li>
+	<li>4</li>
+</ul>
+<button id="btn2">测试</button>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+function move(iTarget){
+	var oDiv=document.getElementById("div1");
+	var timer=null;
+	
+	var alpha=30;
+	clearInterval(timer);
+	timer=setInterval(function(){
+		var speed=0;
+		if(alpha<iTarget){
+			speed=10;
+		}
+		else{
+			speed=-10;
+		}
+
+		if(alpha==iTarget){
+			clearInterval(timer);
+		}
+		else{
+			alpha+=speed;
+			//oDiv.style.filter='alpha(opacity:'alpha')';
+			oDiv.style.opacity=alpha/100;
+		}
+
+	},30);
+}
+
+
+window.onload=function()
+{
+	var oDiv=document.getElementById("div1");
+	oDiv.onmouseover=function(){
+		move(50);
+	}
+	oDiv.onmouseout=function(){
+		move(20);
+		//move(25)；的时候正方形会出现闪动，move(30);的时候正方形的颜色变化不能够回复到原来的颜色，why??
+	}
+}
+</script>
+<style type="text/css">
+	div{
+		width: 200px;
+		height: 200px;
+		background: red;
+		filter:alpha(opacity:30);
+		opacity:0.3;
+	}
+</style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+	
+	
+</script>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0；
+	}
+	div{
+		width: 720px;
+		height:104px;
+		margin: 100px auto;
+		position: relative;
+		background:  green;
+		overflow: hidden;
+	}
+	div ul {
+		position: absolute;
+		top: 0;	
+		padding:0;
+		background: blue;
+	}
+	div ul li {
+		float: left;
+		list-style: none;
+		width: 178px;
+		height: 100px;
+		border:1px solid red;
+	}
+	
+</style>
+<script>
+
+
+window.onload=function(){
+	var oDiv=document.getElementById("div1");
+	var oUl=oDiv.getElementsByTagName("ul")[0];
+	var oLi=oDiv.getElementsByTagName("li");
+	var Timer=null;
+	var speed=-2;
+
+	oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;
+	oUl.style.width=oLi[0].offsetWidth*oLi.length+"px";
+
+	function move(){
+	if(oUl.offsetLeft<-oUl.offsetWidth/2){
+			oUl.style.left=0;
+		}
+	if(oUl.offsetLeft>0){
+			oUl.style.left=-oUl.offsetWidth/2+"px";
+		}
+		oUl.style.left=(oUl.offsetLeft+speed)+"px";
+	}
+    
+
+	Timer=setInterval(move,30);
+
+	oDiv.onmouseover=function(){
+		clearInterval(Timer);
+	};
+	oDiv.onmouseout=function(){
+		Timer=setInterval(move,30);
+	}
+
+	document.getElementsByTagName("a")[0].onclick=function(){
+		speed=-2;
+	}
+	document.getElementsByTagName("a")[1].onclick=function(){
+		speed=2;
+	}
+}
+</script>
+</head>
+<body>
+<a href="javascript:;">left</a>
+<a href="javascript:;">right</a>
+<div id="div1">
+	<ul>
+		<li><img src="images2/1.gif"/></li>
+		<li><img src="images2/2.gif"/></li>
+		<li><img src="images2/3.gif"/></li>
+		<li><img src="images2/4.gif"/></li>
+	</ul>
+</div>
+</body>
+</html>

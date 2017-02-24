@@ -1,0 +1,37 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+window.onload=function(){
+	var oText1=document.getElementById("text1");
+	var oText2=document.getElementById("text2");
+	oText1.onkeydown=function(ev){
+		oEvent=ev||event;
+		if(oEvent.keyCode==13 && oEvent.ctrlKey){
+			oText2.value+=oText1.value+"\n";
+			oText1.value="";
+		};
+	};
+}	
+//shiftKey  ctrlKey  altKey  
+</script>
+<style type="text/css">
+	#text1{
+		margin: 20px;
+		width: 100px;
+	}
+	#text2{
+		width: 150px;
+		height: 150px;
+		margin-left: 20px;
+	}
+	
+</style>
+</head>
+<body>
+<input id="text1" type="text"/><br/>
+<textarea id="text2"></textarea>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+window.onload=function(){
+	var oBtn=document.getElementById("btn");
+	var oUl1=document.getElementById("ul1");
+	var aLi=document.getElementsByTagName("li");
+	oBtn.onclick=function(){
+		var arr=[];
+		for(var i=0;i<aLi.length;i++){
+			arr[i]=aLi[i];
+		}
+		arr.sort(function(li1,li2){
+			n1=parseInt(li1.innerHTML);
+			n2=parseInt(li2.innerHTML);
+			return n1-n2;
+		});
+		for(var i=0;i<arr.length;i++){
+			/*aLi[i]=arr[i];
+			alert("将"+aLi[i].innerHTML+"排在最后");
+			oUl1.appendChild(aLi[i]);*/
+			oUl1.appendChild(arr[i]);
+			//为什么先将arr[i]的值放在aLi[i]里面然后再输出排序就会乱呢？
+
+		};
+
+	};
+
+}	
+	
+</script>
+</head>
+<body>
+<button id="btn">排序</button>
+<ul id="ul1">
+	<li>99</li>
+	<li>2</li>
+	<li>23</li>
+	<li>90</li>
+	<li>45</li>
+	<li>34</li>
+</ul>
+</body>
+</html>

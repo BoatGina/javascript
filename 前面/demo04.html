@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>鼠标移动出现提示框</title>
+<script>
+   var oDiv =document.getElementById('div1');
+   var oInput=document.getElementById('input1');
+   funciton show(){
+   	oDiv.style.display="block";
+
+   }
+   funciton vanish(){
+	oDiv.style.display="none";
+   }
+</script>
+<style type="text/css">
+	#div1{
+		width: 200px;
+		height: 200px;
+		background: #666;
+		border:1px solid black;
+		display:none;
+	}
+
+</style>
+
+</head>
+<body>
+<input type="checkbox" id="input1"  onmousemove="show()" onmouseout="vanish()"/>
+<div id="div1">
+	welcome to   ...
+</div>
+
+</body>
+</html>

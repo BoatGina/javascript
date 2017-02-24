@@ -1,0 +1,24 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+window.onload=function(){
+	var oUl=document.getElementById("ull");
+	var Frag=document.createDocumentFragment();
+	for(var i=0;i<10000;i++){
+		var oLi=document.createElement("li");
+		Frag.appendChild(oLi);
+	};
+	oUl.appendChild(Frag);
+}
+//文档碎片能够将全部需要添加修改的元素内容展示存放着，等到全部弄好猴才一次性得加载到页面，就像吃的胶囊一样，加载一次后会自动消失，在低级的IE浏览器会起到明显的效率提升。但在高级浏览器有时候会减低速度，所以一般高级浏览器比较少用。
+	
+</script>
+</head>
+<body>
+<ul id="ull">
+</ul>
+</body>
+</html>

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<font face="Verdana, Geneva, sans-serif"></font>
+<style type="text/css">    
+    #div1{width:100px;height:100px;background:#ccc;position:absolute;top:0px;left:0px;}
+    #div2{width:100px;height:100px;background:#ccc;position:absolute;left:0px;top:110px;}
+    #div3{width:100px;height:100px;background:red;position:absolute;left:220px;top:0px;filter:alpha(opacity:30);opacity:0.3;}
+    #div4{width:100px;height:100px;background:red;position:absolute;left:330px;top:0px;filter:alpha(opacity:30);opacity:0.3;}
+    #div5{width:100px;height:100px;background:red;position:absolute;left:440px;top:0px;filter:alpha(opacity:30);opacity:0.3;}
+</style>
+<script type="text/javascript">
+window.onload=function()
+{        
+    oDiv1=document.getElementById("div1");
+    oDiv2=document.getElementById("div2");
+    oDiv3=document.getElementById("div3");
+    oDiv4=document.getElementById("div4");
+    oDiv5=document.getElementById("div5");
+    oDiv1.onmouseover=function(){
+        Move(oDiv1,"width",200);    
+        //alert(getStyle(oDiv1,"width"));
+    }
+    oDiv1.onmouseout=function(){
+        Move(oDiv1,"width",100);
+    }
+    oDiv2.onmouseover=function(){
+        Move(oDiv2,"height",200);      
+    }
+    oDiv2.onmouseout=function(){
+        Move(oDiv2,"height",100);
+    }
+    oDiv3.onmouseover=function(){
+        Move(oDiv3,"opacity",100);
+    }
+    oDiv3.onmouseout=function(){
+        Move(oDiv3,"opacity",30);
+    }
+    oDiv4.onmouseover=function(){
+        Move(oDiv4,"opacity",100);    
+    }
+    oDiv4.onmouseout=function(){
+        Move(oDiv4,"opacity",30);
+    }
+    oDiv5.onmouseover=function(){
+        Move(oDiv5,"opacity",100);   
+    }
+    oDiv5.onmouseout=function(){
+        Move(oDiv5,"opacity",30);
+   00 }
+
+    
+} 
+    //获取行间样式    
+    function getStyle(obj,attr)   //getStyle 非行间属性  结果值为 ***px  
+    {    if(obj.currentStyle)
+        {
+            return obj.currentStyle[attr];
+        }
+        else{
+            return getComputedStyle(obj,false)[attr];
+        }        
+    }   
+   　　 //多物体不同运动框架
+    function Move(obj,attr,itarget)
+    {    
+        clearInterval(obj.timer);
+        obj.timer=setInterval(function(){
+            if(attr=="opacity")
+            {    cur=parseFloat(getStyle(obj,attr))*100;
+                speed=(itarget-cur)/10;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);    
+
+                if(cur==itarget)
+                    {
+                    clearInterval(obj.timer);
+                    }else
+                    {    cur+=speed;
+                        obj.style.opacity=cur/100;
+                        obj.style.filter="alpha(opacity:"+cur+")";                
+                    }                
+            }
+            else
+            {
+                cur=parseInt(getStyle(obj,attr));
+                speed=(itarget-cur)/10;   //parseInt 获取的值转化为数
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);    //向下、向上取正
+
+                if(cur==itarget)
+                {
+                    clearInterval(obj.timer);
+                }else
+                {
+                    obj.style[attr]=cur+speed+"px";        
+                }    
+            }    
+
+        },30)    
+    }    
+</script>
+</head>
+<body>    
+        <div id="div1">变宽</div>
+        <div id="div2">变高</div>      
+        <div id="div3"></div>    
+        <div id="div4"></div>  
+        <div id="div5"></div>  
+</body>
+</html>

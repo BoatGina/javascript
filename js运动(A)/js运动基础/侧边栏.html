@@ -1,0 +1,112 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script >
+//简化版：
+function startMove(iTarget){
+	var oDiv=document.getElementById("div1");
+	var Timer=null;
+
+	var speed=0;
+	if(oDiv.offsetLeft>iTarget){
+		speed=-10;
+	}
+	else{
+		speed=10;
+	}
+
+	clearInterval(Timer);
+	Timer=setInterval(function(){
+			if(oDiv.offsetLeft == iTarget){
+				clearInterval(Timer);
+			}
+			else{
+				oDiv.style.left=oDiv.offsetLeft+speed+"px";
+			}
+	},30);
+}
+
+
+/*原始版：
+function startMove1(){
+	var oDiv=document.getElementById("div1");
+	var Timer=null;
+	clearInterval(Timer);
+	Timer=setInterval(function(){
+			if(oDiv.offsetLeft == 0){
+				clearInterval(Timer);
+			}
+			else{
+				oDiv.style.left=oDiv.offsetLeft+10+"px";
+			}
+	},30);
+}
+
+function startMove2(){
+	var oDiv=document.getElementById("div1");
+	var Timer=null;
+	clearInterval(Timer);
+	Timer=setInterval(function(){
+			if(oDiv.offsetLeft == -150){
+				clearInterval(Timer);
+			}
+			else{
+				oDiv.style.left=oDiv.offsetLeft-10+"px";
+			}
+	},30);
+}
+*/
+window.onload=function()
+{
+		var oDiv=document.getElementById("div1");
+		var oSpan=document.getElementById("span1");
+		/*原始版：
+		oSpan.onmouseover=function(){
+			startMove1();
+		}
+		oSpan.onmouseout=function(){
+			startMove2();
+		}*/
+		
+		oDiv.onmouseover=oSpan.onmouseover=function(){
+			startMove(0);	
+		}
+		oDiv.onmouseout=oSpan.onmouseout=function(){
+			startMove(-150);	
+		}
+		
+
+
+}
+
+</script>
+<style type="text/css">
+	div{
+		width: 150px;
+		height: 200px;
+		background: green;
+		position: absolute;
+		left: -150px;
+	}
+	span{
+		width:20px;
+		height: 60px;
+		line-height: 20px;
+		font-size: 12px;
+		text-align: center;
+		position: absolute;
+		top:70px;
+		right:-20px;
+		background: red;
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+<div id="div1">
+	<span id="span1">分享到</span>
+</div>
+</body>
+</html>

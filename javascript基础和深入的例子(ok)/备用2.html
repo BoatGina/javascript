@@ -1,0 +1,57 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script >
+$(document).ready(function(){
+	$(window).scroll(function(){
+		var top=$(document).scrollTop;
+		alert(top);
+		$("#pp").attr("value",top);
+	});
+});
+	
+</script>
+<style type="text/css">
+	body{
+		padding:10px;
+		margin: 0;
+	}
+	div#all{
+		margin-left: 300px;
+	}
+	#div1{
+		width: 500px;
+		height: 200px;
+		background: red;
+	}
+	#div2{
+		width: 500px;
+		height: 1000px;
+		background: green;
+	}
+	#pp{
+
+		color: black;
+		font-weight: bold;
+		width: 90px;
+		height: 30px;
+		position: fixed;
+		top: 10px;
+		left:60%;
+		margin-left: 20px;
+		background: #ccc;
+		z-index: 5;
+	}
+</style>
+</head>
+<body >
+<div id="all">
+	<div id="div1" ></div>
+	<div id="div2" ></div>
+	<p id="pp" value="开始"></p>
+</div>
+</body>
+</html>
